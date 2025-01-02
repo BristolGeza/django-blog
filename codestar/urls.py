@@ -1,15 +1,8 @@
-from . import views
-from django.urls import path
+from django.contrib import admin
+from django.urls import path, include
+from blog import views as blog_views
 
 urlpatterns = [
-    path('', views.PostList.as_view(), name='home'),
+    path("blog/", blog_views.my_blog, name='blog'),
+    path('admin/', admin.site.urls),
 ]
-
-#from django.contrib import admin
-#from django.urls import path, include
-
-#urlpatterns[
-
-   # path("", include("blog.urls"), name="blog-urls"),
-    #path('admin/', admin.site.urls,)
-#]
