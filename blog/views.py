@@ -30,4 +30,10 @@ def post_detail(request, slug):
         "blog/post_detail.html",
         {"post": post},
     )
-    
+
+
+
+def about_page(request):
+    return render(request, 'about/about.html')
+
+
