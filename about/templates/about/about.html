@@ -1,30 +1,42 @@
 {% extends 'base.html' %}
-{% block content %}
 {% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
 <div class="container mt-5">
     <div class="row">
-        <div class="col-4 text-center">
+        <div class="col-12 col-md-4 text-center">
             <img src="{% static 'images/nobody.jpg' %}" width="75%">
         </div>
-        <div class="col-8">
-            <h2>{{ about.title }}Geza Csosz</h2>
-            {{ about.content | safe }}Csosz is a Hungarian-British fine artist and photographer.[3] His work often features his family as central subjects, with irony and banality. 
-            His works often explore themes like modern slavery, existence, and time, and he has exhibited his art internationally, including in Spain, Egypt, Hungary, and France. In addition to his photography, Csosz has also produced several films and authored books that reflect his artistic vision and thematic concerns.
-            One aspect of Csosz's work is his project "Family World," which presents an idyllic and poetic view of life through the lens of his family experiences. This project has a warm, playful, and human-scale world with a sense of childhood wonder and innocence, while also hinting at the underlying complexities and challenges of adult life.
+        <div class="col-12 col-md-8">
+            <h2>{{ about.title }}</h2>
+            {{ about.content | safe }}
         </div>
     </div>
     <div class="row">
         <div class="col text-right">
           <!-- Updated on field goes in here -->
-           <p>
-
-            Csosz's work often explores themes like modern slavery, existence, and time, blending irony and banality. His art is known for its spontaneity and emotional depth, often featuring his family as central subjects2.
-            
-            
-            He has worked with enamel. He had exhibitions in Budapest at the Ericsson Gallery of Fine Arts Gallery,[4] and in Szeged (at the Southern Hungarian Creative House).</p>
     
-          <p class="text-end"><em>Updated on: {{ about.updated_on }} 03/01/2024</em></p>
+          <p class="text-end"><em>Updated on: {{ about.updated_on }}</em></p>
         </div>
-      </div>    
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 my-5">
+            <h2>Let's collaborate!</h2>
+            <p>I believe in the power of shared knowledge and collective effort.
+                Whether you have a project in mind, wish to co-author
+                an article, or simply want to brainstorm some ideas,
+                I'm excited to hear from you. Fill out the form
+                and we can get the ball rolling!</p>
+
+            <!-- add your form here. Your submit button should 
+                                have the classes of btn, btn-secondary -->
+            <form method="post">
+                {{ collaborate_form | crispy }}
+                {% csrf_token %}
+                <button class="btn btn-secondary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock content %}
